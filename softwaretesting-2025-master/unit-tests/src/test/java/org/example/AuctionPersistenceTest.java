@@ -11,18 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AuctionPersistenceTest {
 
     private static final AuctionPersistence subject = new AuctionPersistence();
+    
     @Test
     public void shouldCreateAnAuction() {
-        //test setup
         Auction auction = new Auction.Builder()
                 .withInicialDate(LocalDate.now().plusDays(1))
                 .withName("PS 5")
                 .withDescription("My little PS 5")
                 .withMinimumBidValue(BigDecimal.valueOf(2000))
                 .build();
-        //goal
         Auction result = subject.create(auction);
-        //assertion
         assertEquals(auction.getName(), result.getName());
         assertEquals(auction.getDescription(), result.getDescription());
         assertEquals(auction.getInitialDate(), result.getInitialDate());
